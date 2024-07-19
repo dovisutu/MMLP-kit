@@ -19,7 +19,7 @@ namespace MmlpLib.Extensions
         /// <param name="namespaceDirectory">加载的基准位置</param>
         /// <param name="config">采用的全局配置</param>
         /// <param name="parameters">局部打包配置的附加参数</param>
-        /// <returns>一个<see cref="Tuple"/>，第一参数为提供器的目标</returns>
+        /// <returns>一个<see cref="ValueTuple"/>，包含提供器和合并参数</returns>
         public delegate EvaluatorReturnType
             ProviderEvaluator(DirectoryInfo namespaceDirectory,
                               Config config,
@@ -42,7 +42,7 @@ namespace MmlpLib.Extensions
                        => next.provider.ApplyTo(accumulate, next.options));
 
 
-        #region Data
+        #region PolicyMap
         /// <summary>
         /// 从<see cref="PackerPolicyType"/>到加载方法<see cref="ProviderEvaluator"/>的查询表
         /// </summary>
