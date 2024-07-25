@@ -12,8 +12,8 @@ namespace MmlpLib.Extensions
         /// <param name="config">枚举使用的配置</param>
         /// <returns>检索得到的命名空间文件夹</returns>
         public static IEnumerable<DirectoryInfo> EnumerateNamespaces(
-            this string assetDirectory, IEnumerable<string> targetModIdentifiers, Config config)
-            => from modDirectory in new DirectoryInfo(assetDirectory).EnumerateDirectories()
+            this DirectoryInfo assetDirectory, IEnumerable<string> targetModIdentifiers, Config config)
+            => from modDirectory in assetDirectory.EnumerateDirectories()
                let modIdentifier = modDirectory.Name
                where !targetModIdentifiers.Any()                                   // 未提供列表，全部打包
                    || targetModIdentifiers.Contains(modIdentifier)                 // 有列表，仅打包列表中的项
